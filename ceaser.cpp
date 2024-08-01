@@ -4,6 +4,7 @@
 const int SHIFT = 3;
 const int MAX = 126; //end of ascii table
 const int MIN = 36; //3 above ascii character table start
+cosnt int asciiSpaceValue = ?;
 
 std::string getUserInput()
 {
@@ -22,21 +23,21 @@ char getAsciiValue(char character)
 std::string encrypt(std::string str)
 {
     std::string encryptedString;
-    const int sizeOfString = str.size();
-    for (int i = 0; i < sizeOfString; i ++)
+
+    for (int i = 0; i < sizeOfString; i ++) //size of string needs to be declared and initialised
     {
         char character;
         int asciiValue = getAsciiValue(str[i]);
-        if (asciiValue != 32 && asciiValue > MIN) //shift everything expect for space
+        if (asciiValue != asciiSpaceValue && asciiValue > MIN) //shift everything expect for space
         {
             asciiValue = asciiValue - SHIFT;
             character = asciiValue;
             encryptedString.insert(i, 1, character);
         }
         
-        else if (asciiValue != 32 && asciiValue < MIN) //shift characters back to top if out of range
+        else if (asciiValue != asciiSpaceValue && asciiValue < MIN) //shift characters back to top if out of range
         {
-            asciiValue = asciiValue + 94;
+            asciiValue = asciiValue + ?; //number needed to wrap around back to top of ascii characters
             asciiValue = asciiValue - SHIFT;
             character = asciiValue;
             encryptedString.insert(i, 1, character);
