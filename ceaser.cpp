@@ -22,7 +22,8 @@ char getAsciiValue(char character)
 std::string encrypt(std::string str)
 {
     std::string encryptedString;
-    for (int i = 0; i < str.size(); i ++)
+    const int sizeOfString = str.size();
+    for (int i = 0; i < sizeOfString; i ++)
     {
         char character;
         int asciiValue = getAsciiValue(str[i]);
