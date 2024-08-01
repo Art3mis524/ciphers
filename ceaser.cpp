@@ -2,22 +2,21 @@
 #include <string>
 
 const int SHIFT = 3;
-const int MAX = 126;
-const int MIN = 36;
+const int MAX = 126; //end of ascii table
+const int MIN = 36; //3 above ascii character table start
 
 std::string getUserInput()
 {
     std::string str;
     std::cout << "enter string" << std::endl;
-    std::getline(std::cin, str);
+    std::getline(std::cin, str); //get user input
     return str;
 }
 
 char getAsciiValue(char character)
 {
     int ascii = character;
-    std::cout << ascii << std::endl;
-    return ascii;
+    return ascii; //convert character into ascii value
 }
 
 std::string encrypt(std::string str)
@@ -27,14 +26,14 @@ std::string encrypt(std::string str)
     {
         char character;
         int asciiValue = getAsciiValue(str[i]);
-        if (asciiValue != 32 && asciiValue > MIN) //32 is a space
+        if (asciiValue != 32 && asciiValue > MIN) //shift everything expect for space
         {
             asciiValue = asciiValue - SHIFT;
             character = asciiValue;
             encryptedString.insert(i, 1, character);
         }
         
-        else if (asciiValue != 32 && asciiValue < MIN)
+        else if (asciiValue != 32 && asciiValue < MIN) //shift characters back to top if out of range
         {
             asciiValue = asciiValue + 94;
             asciiValue = asciiValue - SHIFT;
