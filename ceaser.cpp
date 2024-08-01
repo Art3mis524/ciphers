@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 const int SHIFT = 3;
 
@@ -10,9 +11,23 @@ std::string getUserInput()
     return str;
 }
 
-std::string encrypt(std::string)
+char getAsciiValue(char character)
 {
-    
+    int ascii = (int) character;
+    std::cout << ascii << std::endl;
+    return ascii;
+}
+
+std::string encrypt(std::string str)
+{
+    for (int i = 0; i < str.size(); i ++)
+    {
+        char currentCharacter = str[i];
+        if (getAsciiValue(currentCharacter) == 32)
+        {
+            std::cout << "space found" << std::endl;
+        }
+    }
 }
 
 int main()
